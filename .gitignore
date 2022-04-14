@@ -8,7 +8,7 @@ example/build
 
 # builds
 build
-dist
+
 
 # misc
 .DS_Store
