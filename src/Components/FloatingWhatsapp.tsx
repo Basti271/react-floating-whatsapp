@@ -2,10 +2,6 @@ import React, { useReducer, useEffect, useCallback, useRef, useMemo } from 'reac
 import { WhatsappSVG, CloseSVG, CheckSVG, SendSVG } from './Icons'
 import css from '../styles.module.css'
 
-import darkBG from './assets/bg-chat-tile-light.png'
-import lightBG from './assets/bg-chat-tile-dark.png'
-import dummyAvatar from './assets/uifaces-avatar.jpg'
-import SoundBeep from './assets/whatsapp-notification.mp3'
 
 interface FloatingWhatsAppProps {
   phoneNumber: string
@@ -80,7 +76,7 @@ export default function FloatingWhatsApp({
   phoneNumber = '1234567890',
   accountName = 'Account Name',
   height = 320,
-  avatar = dummyAvatar,
+  avatar = '',
   statusMessage = 'Typically replies within 1 hour',
   defaultMessage = "Hi, I have a query",
   chatMessage = 'Hello there! 🤝 \nHow can we help?',
@@ -200,7 +196,7 @@ export default function FloatingWhatsApp({
           </div>
         </header>
 
-        <div className={css.chatBody} style={{ backgroundImage: `url(${darkMode ? darkBG : lightBG})` }}>
+        <div className={css.chatBody}>
           {isDelay ? (
             <div className={css.chatBubble}>
               <div className={css.typing}>
@@ -239,10 +235,7 @@ export default function FloatingWhatsApp({
           </form>
         </footer>
       </div>
-      {notificationSound && (
-        // eslint-disable-next-line jsx-a11y/media-has-caption
-        <audio ref={soundRef} hidden src={SoundBeep} />
-      )}
+     
     </div>
   )
 }
